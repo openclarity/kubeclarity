@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  kubeclarity:
+  - apiVersion: v2
+    appVersion: v2.0.0
+    created: "2022-03-31T14:08:33.469100331Z"
+    dependencies:
+    - alias: kubeclarity-postgresql
+      condition: kubeclarity-postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.12.2
+    description: Charts for KubeClarity deployment.
+    digest: 2e87d91994ce086513944bcf5a92cac87ce94c64294ad981c9ff26239d254fde
+    home: https://github.com/cisco-open/kubei
+    icon: https://github.com/cisco-open/kubei/raw/main/images/kubeclarity-logo.png
+    maintainers:
+    - name: KubeClarity
+      url: https://github.com/cisco-open/kubei
+    name: kubeclarity
+    sources:
+    - https://github.com/cisco-open/kubei
+    type: application
+    urls:
+    - https://github.com/cisco-open/kubei/releases/download/kubeclarity-v2.0.0-helm/kubeclarity-v2.0.0.tgz
+    version: v2.0.0
+generated: "2022-03-31T14:08:33.469108331Z"
