@@ -293,7 +293,8 @@ func (s *Scanner) createJob(data *scanData) (*batchv1.Job, error) {
 	setJobImageNameToScan(job, podContext.imageName)
 	if podContext.imagePullSecret != "" {
 		log.WithFields(s.logFields).Debugf("Adding private registry credentials to image: %s", podContext.imageName)
-		setJobImagePullSecret(job, podContext.imagePullSecret)
+		setJobImagePullSecretName(job, podContext.imagePullSecret)
+		setJobImagePullSecretNamespace(job, podContext.namespace)
 	} else {
 		// Use private repo sa credentials only if there is no imagePullSecret
 		for _, adder := range s.credentialAdders {
@@ -317,19 +318,17 @@ func removeCISDockerBenchmarkScannerFromJob(job *batchv1.Job) {
 	job.Spec.Template.Spec.Containers = containers
 }
 
-func setJobImagePullSecret(job *batchv1.Job, secretName string) {
+func setJobImagePullSecretName(job *batchv1.Job, secretName string) {
 	for i := range job.Spec.Template.Spec.Containers {
 		container := &job.Spec.Template.Spec.Containers[i]
-		container.Env = append(container.Env, corev1.EnvVar{
-			Name: shared.ImagePullSecret, ValueFrom: &corev1.EnvVarSource{
-				SecretKeyRef: &corev1.SecretKeySelector{
-					LocalObjectReference: corev1.LocalObjectReference{
-						Name: secretName,
-					},
-					Key: corev1.DockerConfigJsonKey,
-				},
-			},
-		})
+		container.Env = append(container.Env, corev1.EnvVar{Name: shared.ImagePullSecret, Value: secretName})
+	}
+}
+
+func setJobImagePullSecretNamespace(job *batchv1.Job, namespace string) {
+	for i := range job.Spec.Template.Spec.Containers {
+		container := &job.Spec.Template.Spec.Containers[i]
+		container.Env = append(container.Env, corev1.EnvVar{Name: shared.ImagePullSecretNamespace, Value: namespace})
 	}
 }
 
