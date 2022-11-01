@@ -6,8 +6,8 @@ require (
 	github.com/CycloneDX/cyclonedx-go v0.6.0
 	github.com/go-openapi/runtime v0.24.1
 	github.com/go-openapi/strfmt v0.21.3
-	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0
+	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2
 	gotest.tools v2.2.0+incompatible
 	k8s.io/api v0.23.5
 	k8s.io/apimachinery v0.23.5
@@ -153,8 +153,8 @@ require (
 )
 
 replace (
-	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.0 => ./../api
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0 => ./../shared
+	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.2 => ./../api
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2 => ./../shared
 )
 
 // Replace containerd due to GHSA-5ffw-gxpp-mxpf

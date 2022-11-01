@@ -12,7 +12,7 @@ require (
 	github.com/urfave/cli v1.22.5
 	gorm.io/driver/sqlite v1.2.6
 	gorm.io/gorm v1.22.5
-	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.0
+	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.2
 )
 
 require (
@@ -58,4 +58,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.0 => ./../api
+replace github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.2 => ./../api

@@ -11,10 +11,10 @@ require (
 	github.com/go-openapi/strfmt v0.21.3
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.5.8
-	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0
+	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.12.0
@@ -213,12 +213,12 @@ require (
 )
 
 replace (
-	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.0 => ./../api
-	github.com/sambetts-cisco/kubeclarity/runtime_k8s_scanner/v2 v2.7.0 => ./../runtime_k8s_scanner
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/v2 v2.7.0 => ./../runtime_scan
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.0 => ./../runtime_scan/api
-	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.0 => ./../sbom_db/api
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0 => ./../shared
+	github.com/sambetts-cisco/kubeclarity/api/v2 v2.7.2 => ./../api
+	github.com/sambetts-cisco/kubeclarity/runtime_k8s_scanner/v2 v2.7.2 => ./../runtime_k8s_scanner
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/v2 v2.7.2 => ./../runtime_scan
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.2 => ./../runtime_scan/api
+	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.2 => ./../sbom_db/api
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2 => ./../shared
 )
 
 // Replace containerd due to GHSA-5ffw-gxpp-mxpf

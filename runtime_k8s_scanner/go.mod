@@ -7,9 +7,9 @@ require (
 	github.com/Portshift/go-utils v0.0.0-20211213074910-dd69e9ff3e27
 	github.com/go-openapi/runtime v0.24.1
 	github.com/go-openapi/strfmt v0.21.3
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.0
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.2
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.12.0
 	github.com/spiegel-im-spiegel/go-cvss v0.4.0
@@ -345,9 +345,9 @@ require (
 )
 
 replace (
-	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.0 => ./../runtime_scan/api
-	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.0 => ./../sbom_db/api
-	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.0 => ./../shared
+	github.com/sambetts-cisco/kubeclarity/runtime_scan/api/v2 v2.7.2 => ./../runtime_scan/api
+	github.com/sambetts-cisco/kubeclarity/sbom_db/api/v2 v2.7.2 => ./../sbom_db/api
+	github.com/sambetts-cisco/kubeclarity/shared/v2 v2.7.2 => ./../shared
 )
 
 // Replace containerd due to GHSA-5ffw-gxpp-mxpf
