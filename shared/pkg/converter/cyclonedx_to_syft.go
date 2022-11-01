@@ -24,7 +24,7 @@ import (
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	syft_sbom "github.com/anchore/syft/syft/sbom"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/formatter"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/formatter"
 )
 
 var ErrFailedToGetCycloneDXSBOM = errors.New("failed to get CycloneDX SBOM from file")

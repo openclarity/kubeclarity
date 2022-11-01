@@ -23,9 +23,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gorm.io/gorm"
 
-	"github.com/openclarity/kubeclarity/api/server/models"
-	"github.com/openclarity/kubeclarity/api/server/restapi/operations"
-	"github.com/openclarity/kubeclarity/backend/pkg/database"
+	"github.com/sambetts-cisco/kubeclarity/api/v2/server/models"
+	"github.com/sambetts-cisco/kubeclarity/api/v2/server/restapi/operations"
+	"github.com/sambetts-cisco/kubeclarity/backend/v2/pkg/database"
 )
 
 func (s *Server) GetPackages(params operations.GetPackagesParams) middleware.Responder {

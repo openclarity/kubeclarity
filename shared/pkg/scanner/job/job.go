@@ -18,10 +18,10 @@ package job
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/config"
-	"github.com/openclarity/kubeclarity/shared/pkg/job_manager"
-	"github.com/openclarity/kubeclarity/shared/pkg/scanner/dependency_track"
-	"github.com/openclarity/kubeclarity/shared/pkg/scanner/grype"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/config"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/job_manager"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/scanner/dependency_track"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/scanner/grype"
 )
 
 func CreateJob(scannerName string, config *config.Config, logger *logrus.Entry, resultChan chan job_manager.Result) job_manager.Job {

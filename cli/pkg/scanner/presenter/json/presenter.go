@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/scanner"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/scanner"
 )
 
 type Presenter struct {

@@ -1,4 +1,4 @@
-module github.com/cisco-open/kubei/e2e/test_ananlyze
+module github.com/sambetts-cisco/kubeclarity/e2e/vulnerable/v2
 
 go 1.17
 

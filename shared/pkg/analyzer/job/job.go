@@ -18,10 +18,10 @@ package job
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/analyzer/cdx_gomod"
-	"github.com/openclarity/kubeclarity/shared/pkg/analyzer/syft"
-	"github.com/openclarity/kubeclarity/shared/pkg/config"
-	"github.com/openclarity/kubeclarity/shared/pkg/job_manager"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/analyzer/cdx_gomod"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/analyzer/syft"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/config"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/job_manager"
 )
 
 func CreateAnalyzerJob(analyzerName string, config *config.Config, logger *logrus.Entry, resultChan chan job_manager.Result) job_manager.Job {

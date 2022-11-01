@@ -23,8 +23,8 @@ import (
 	cdx "github.com/CycloneDX/cyclonedx-go"
 	"gotest.tools/assert"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/formatter"
-	"github.com/openclarity/kubeclarity/shared/pkg/utils"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/formatter"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/utils"
 )
 
 func TestMergedResults_createComponentListFromMap(t *testing.T) {

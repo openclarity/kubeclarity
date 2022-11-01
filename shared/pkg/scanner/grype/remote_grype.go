@@ -29,10 +29,10 @@ import (
 	"github.com/go-openapi/strfmt"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/openclarity/kubeclarity/shared/pkg/config"
-	"github.com/openclarity/kubeclarity/shared/pkg/job_manager"
-	"github.com/openclarity/kubeclarity/shared/pkg/scanner"
-	"github.com/openclarity/kubeclarity/shared/pkg/utils"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/config"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/job_manager"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/scanner"
+	"github.com/sambetts-cisco/kubeclarity/shared/v2/pkg/utils"
 )
 
 type RemoteScanner struct {

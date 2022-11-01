@@ -30,8 +30,8 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envfuncs"
 	"sigs.k8s.io/e2e-framework/third_party/helm"
 
-	"github.com/openclarity/kubeclarity/api/client/client"
-	"github.com/openclarity/kubeclarity/e2e/common"
+	"github.com/sambetts-cisco/kubeclarity/api/v2/client/client"
+	"github.com/sambetts-cisco/kubeclarity/e2e/v2/common"
 )
 
 var (

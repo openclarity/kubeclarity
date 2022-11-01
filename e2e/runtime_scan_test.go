@@ -26,8 +26,8 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	"github.com/openclarity/kubeclarity/api/client/models"
-	"github.com/openclarity/kubeclarity/e2e/common"
+	"github.com/sambetts-cisco/kubeclarity/api/v2/client/models"
+	"github.com/sambetts-cisco/kubeclarity/e2e/v2/common"
 )
 
 func TestRuntimeScan(t *testing.T) {

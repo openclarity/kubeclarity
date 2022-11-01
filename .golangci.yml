@@ -8,7 +8,7 @@ linters-settings:
   golint:
     min-confidence: 0.1
   goimports:
-    local-prefixes: github.com/openclarity/kubeclarity
+    local-prefixes: github.com/sambetts-cisco/kubeclarity
   errorlint:
     # Check whether fmt.Errorf uses the %w verb for formatting errors. See the readme for caveats
     errorf: false
@@ -56,7 +56,7 @@ linters:
     - nosnakecase # Allow snake case (we are using _ in some named imports)
     - ireturn # Allow returning with iterfaces
     - exhaustruct # Allow structures with uninitialized fields
-    - gci # imports still has gci lint errors after run `gci write --skip-generated -s standard -s default -s "prefix(github.com/openclarity/kubeclarity)"`
+    - gci # imports still has gci lint errors after run `gci write --skip-generated -s standard -s default -s "prefix(github.com/sambetts-cisco/kubeclarity)"`
 
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source
