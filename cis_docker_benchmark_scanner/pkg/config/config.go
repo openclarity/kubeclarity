@@ -42,11 +42,12 @@ type Config struct {
 func LoadConfig() (*Config, error) {
 	viper.SetDefault(Timeout, "2m")
 	imageIDToScan := viper.GetString(shared.ImageIDToScan)
+	imageNameToScan := viper.GetString(shared.ImageNameToScan)
 	config := &Config{
 		ResultServiceAddress: viper.GetString(shared.ResultServiceAddress),
 		ScanUUID:             viper.GetString(shared.ScanUUID),
-		Registry:             shared.LoadRuntimeScannerRegistryConfig(imageIDToScan),
-		ImageNameToScan:      viper.GetString(shared.ImageNameToScan),
+		Registry:             shared.LoadRuntimeScannerRegistryConfig(imageNameToScan),
+		ImageNameToScan:      imageNameToScan,
 		ImageIDToScan:        imageIDToScan,
 		ImageHashToScan:      viper.GetString(shared.ImageHashToScan),
 		Timeout:              viper.GetDuration(Timeout),

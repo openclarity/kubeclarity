@@ -41,15 +41,16 @@ type Config struct {
 
 func LoadConfig() (*Config, error) {
 	imageIDToScan := viper.GetString(shared.ImageIDToScan)
+	imageNameToScan := viper.GetString(shared.ImageNameToScan)
 	config := &Config{
 		ResultServiceAddress: viper.GetString(shared.ResultServiceAddress),
 		SBOMDBAddress:        viper.GetString(SBOMDBAddress),
 		ImageIDToScan:        imageIDToScan,
 		ImageHashToScan:      viper.GetString(shared.ImageHashToScan),
-		ImageNameToScan:      viper.GetString(shared.ImageNameToScan),
+		ImageNameToScan:      imageNameToScan,
 		ScanUUID:             viper.GetString(shared.ScanUUID),
 		SharedConfig: &shared.Config{
-			Registry: shared.LoadRuntimeScannerRegistryConfig(imageIDToScan),
+			Registry: shared.LoadRuntimeScannerRegistryConfig(imageNameToScan),
 			Analyzer: shared.LoadAnalyzerConfig(),
 			Scanner:  shared.LoadScannerConfig(),
 		},
