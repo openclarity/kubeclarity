@@ -211,12 +211,8 @@ func (s *Scanner) initScan() error {
 		containers := append(pod.Spec.Containers, pod.Spec.InitContainers...)
 
 		for _, container := range containers {
-			imageID, ok := containerNameToImageID[container.Name]
-			if !ok {
-				log.Warnf("Image id is missing. pod=%v, namepspace=%v, container=%v ,image=%v",
-					pod.GetName(), pod.GetNamespace(), container.Name, container.Image)
-				continue
-			}
+			imageID := container.Image
+
 			imageHash := k8sutils.ParseImageHash(imageID)
 			if imageHash == "" {
 				log.WithFields(s.logFields).Warnf("Failed to get image hash - ignoring image. "+
