@@ -45,7 +45,7 @@ func (a *AnalyzerImpl) Analyze(config *config.Config) (*analyzer.MergedResults, 
 	manager := job_manager.New(config.SharedConfig.Analyzer.AnalyzerList, config.SharedConfig, a.logger,
 		job.Factory)
 
-	results, err := manager.Run(utils.IMAGE, config.ImageIDToScan)
+	results, err := manager.Run(utils.IMAGE, config.ImageNameToScan)
 	if err != nil {
 		return nil, fmt.Errorf("failed to run job manager: %v", err)
 	}

@@ -159,13 +159,13 @@ func reportError(reporter report.Reporter, logger *log.Entry, errString error) {
 func createLogger(conf *_config.Config) *log.Entry {
 	logger := log.New()
 	logger.SetLevel(log.GetLevel())
-	return logger.WithFields(log.Fields{"scan-uuid": conf.ScanUUID, "image-id": conf.ImageIDToScan})
+	return logger.WithFields(log.Fields{"scan-uuid": conf.ScanUUID, "image-id": conf.ImageNameToScan})
 }
 
 func getLayerCommands(conf *_config.Config) ([]*image_helper.FsLayerCommand, error) {
-	layerCommands, err := image_helper.GetImageLayerCommands(conf.ImageIDToScan, conf.SharedConfig)
+	layerCommands, err := image_helper.GetImageLayerCommands(conf.ImageNameToScan, conf.SharedConfig)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get commands from image=%s: %v", conf.ImageIDToScan, err)
+		return nil, fmt.Errorf("failed to get commands from image=%s: %v", conf.ImageNameToScan, err)
 	}
 
 	return layerCommands, nil

@@ -39,7 +39,7 @@ func createDockleConfig(scanConfig *config.Config) *dockle_config.Config {
 		Password:  scanConfig.Registry.Auths[0].Password,
 		Insecure:  scanConfig.Registry.SkipVerifyTLS,
 		NonSSL:    scanConfig.Registry.UseHTTP,
-		ImageName: scanConfig.ImageIDToScan,
+		ImageName: scanConfig.ImageNameToScan,
 	}
 }
 
