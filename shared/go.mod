@@ -28,10 +28,12 @@ require (
 	github.com/rs/zerolog v1.26.1
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.0
+	github.com/anchore/go-logger v0.0.0-20220728155337-03b66a5207d8
 	github.com/spf13/viper v1.13.0
 	github.com/yudai/gojsondiff v1.0.0
 	go.uber.org/zap v1.23.0
 	gotest.tools v2.2.0+incompatible
+	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
 )
 
 require (

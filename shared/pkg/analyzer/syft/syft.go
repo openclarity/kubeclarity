@@ -16,6 +16,7 @@
 package syft
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/anchore/syft/syft"
@@ -57,6 +58,8 @@ func New(c job_manager.IsConfig, logger *log.Entry, resultChan chan job_manager.
 }
 
 func (a *Analyzer) Run(sourceType utils.SourceType, userInput string) error {
+	a.logger.Infof("source type: %v, userInput: %v", sourceType, userInput)
+
 	src := utils.CreateSource(sourceType, userInput, a.localImage)
 	a.logger.Infof("Called %s analyzer on source %s", a.name, src)
 	// TODO platform can be defined
@@ -65,6 +68,13 @@ func (a *Analyzer) Run(sourceType utils.SourceType, userInput string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create input from source analyzer=%s: %v", a.name, err)
 	}
+	a.logger.Infof("UserInput: %v, ImageSource: %v, Location: %v, Scheme: %v, Platform: %v", input.UserInput, input.ImageSource, input.Location, input.Scheme, input.Platform)
+	B, err := json.Marshal(a.config.RegistryOptions)
+	if err != nil {
+		return err
+	}
+	a.logger.Infof("registry options: %s", B)
+
 	s, _, err := source.New(*input, a.config.RegistryOptions, []string{})
 	if err != nil {
 		return fmt.Errorf("failed to create source analyzer=%s: %v", a.name, err)
