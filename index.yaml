@@ -2,6 +2,34 @@ apiVersion: v1
 entries:
   kubeclarity:
   - apiVersion: v2
+    appVersion: v2.18.0
+    created: "2023-05-10T12:39:44.948189147Z"
+    dependencies:
+    - alias: kubeclarity-postgresql
+      condition: kubeclarity-postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    - alias: kubeclarity-trivy-server
+      condition: kubeclarity-trivy-server.enabled
+      name: trivy
+      repository: https://aquasecurity.github.io/helm-charts
+      version: 0.4.17
+    description: Charts for KubeClarity deployment.
+    digest: 52459ea6bf11be1f487cf0281d56ec66888a051921261ea60b1916e0ec81eb93
+    home: https://github.com/openclarity/kubeclarity
+    icon: https://github.com/openclarity/kubeclarity/raw/main/images/kubeclarity-logo.png
+    maintainers:
+    - name: KubeClarity
+      url: https://github.com/openclarity/kubeclarity
+    name: kubeclarity
+    sources:
+    - https://github.com/openclarity/kubeclarity
+    type: application
+    urls:
+    - https://github.com/openclarity/kubeclarity/releases/download/kubeclarity-v2.18.0-helm/kubeclarity-v2.18.0.tgz
+    version: v2.18.0
+  - apiVersion: v2
     appVersion: v2.17.1
     created: "2023-05-03T16:14:17.662642861Z"
     dependencies:
@@ -608,4 +636,4 @@ entries:
     urls:
     - https://github.com/cisco-open/kubei/releases/download/kubeclarity-v2.0.0-helm/kubeclarity-v2.0.0.tgz
     version: v2.0.0
-generated: "2023-05-03T16:14:17.662818669Z"
+generated: "2023-05-10T12:39:44.948615051Z"
