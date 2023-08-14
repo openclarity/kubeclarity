@@ -1279,6 +1279,22 @@ func init() {
     }
   },
   "definitions": {
+    "AccessComplexity": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "AccessVector": {
+      "type": "string",
+      "enum": [
+        "NETWORK",
+        "ADJACENT",
+        "LOCAL"
+      ]
+    },
     "ApiResponse": {
       "description": "An object that is returned in all cases of failures.",
       "type": "object",
@@ -1510,6 +1526,14 @@ func init() {
         "PHYSICAL"
       ]
     },
+    "Authentication": {
+      "type": "string",
+      "enum": [
+        "MULTIPLE",
+        "SINGLE",
+        "NONE"
+      ]
+    },
     "Availability": {
       "type": "string",
       "enum": [
@@ -1659,6 +1683,40 @@ func init() {
         }
       }
     },
+    "CVSSItem": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "$ref": "#/definitions/CVSSMetrics"
+        },
+        "vector": {
+          "type": "string"
+        },
+        "vectorBreakdown": {
+          "$ref": "#/definitions/CVSSVectorBreakdown"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "CVSSMetrics": {
+      "type": "object",
+      "properties": {
+        "baseScore": {
+          "type": "number"
+        },
+        "exploitabilityScore": {
+          "type": "number"
+        },
+        "impactScore": {
+          "type": "number"
+        },
+        "severity": {
+          "$ref": "#/definitions/VulnerabilitySeverity"
+        }
+      }
+    },
     "CVSSV3Metrics": {
       "type": "object",
       "properties": {
@@ -1705,6 +1763,44 @@ func init() {
         },
         "vector": {
           "type": "string"
+        }
+      }
+    },
+    "CVSSVectorBreakdown": {
+      "type": "object",
+      "properties": {
+        "accessComplexity": {
+          "$ref": "#/definitions/AccessComplexity"
+        },
+        "accessVector": {
+          "$ref": "#/definitions/AccessVector"
+        },
+        "attackComplexity": {
+          "$ref": "#/definitions/AttackComplexity"
+        },
+        "attackVector": {
+          "$ref": "#/definitions/AttackVector"
+        },
+        "authentication": {
+          "$ref": "#/definitions/Authentication"
+        },
+        "availability": {
+          "$ref": "#/definitions/Availability"
+        },
+        "confidentiality": {
+          "$ref": "#/definitions/Confidentiality"
+        },
+        "integrity": {
+          "$ref": "#/definitions/Integrity"
+        },
+        "privilegesRequired": {
+          "$ref": "#/definitions/PrivilegesRequired"
+        },
+        "scope": {
+          "$ref": "#/definitions/Scope"
+        },
+        "userInteraction": {
+          "$ref": "#/definitions/UserInteraction"
         }
       }
     },
@@ -1880,6 +1976,12 @@ func init() {
       "properties": {
         "cvss": {
           "$ref": "#/definitions/CVSS"
+        },
+        "cvsses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CVSSItem"
+          }
         },
         "description": {
           "type": "string"
@@ -2372,6 +2474,12 @@ func init() {
       "properties": {
         "cvss": {
           "$ref": "#/definitions/CVSS"
+        },
+        "cvsses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CVSSItem"
+          }
         },
         "description": {
           "type": "string"
@@ -5350,6 +5458,22 @@ func init() {
     }
   },
   "definitions": {
+    "AccessComplexity": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "AccessVector": {
+      "type": "string",
+      "enum": [
+        "NETWORK",
+        "ADJACENT",
+        "LOCAL"
+      ]
+    },
     "ApiResponse": {
       "description": "An object that is returned in all cases of failures.",
       "type": "object",
@@ -5581,6 +5705,14 @@ func init() {
         "PHYSICAL"
       ]
     },
+    "Authentication": {
+      "type": "string",
+      "enum": [
+        "MULTIPLE",
+        "SINGLE",
+        "NONE"
+      ]
+    },
     "Availability": {
       "type": "string",
       "enum": [
@@ -5730,6 +5862,40 @@ func init() {
         }
       }
     },
+    "CVSSItem": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "$ref": "#/definitions/CVSSMetrics"
+        },
+        "vector": {
+          "type": "string"
+        },
+        "vectorBreakdown": {
+          "$ref": "#/definitions/CVSSVectorBreakdown"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "CVSSMetrics": {
+      "type": "object",
+      "properties": {
+        "baseScore": {
+          "type": "number"
+        },
+        "exploitabilityScore": {
+          "type": "number"
+        },
+        "impactScore": {
+          "type": "number"
+        },
+        "severity": {
+          "$ref": "#/definitions/VulnerabilitySeverity"
+        }
+      }
+    },
     "CVSSV3Metrics": {
       "type": "object",
       "properties": {
@@ -5776,6 +5942,44 @@ func init() {
         },
         "vector": {
           "type": "string"
+        }
+      }
+    },
+    "CVSSVectorBreakdown": {
+      "type": "object",
+      "properties": {
+        "accessComplexity": {
+          "$ref": "#/definitions/AccessComplexity"
+        },
+        "accessVector": {
+          "$ref": "#/definitions/AccessVector"
+        },
+        "attackComplexity": {
+          "$ref": "#/definitions/AttackComplexity"
+        },
+        "attackVector": {
+          "$ref": "#/definitions/AttackVector"
+        },
+        "authentication": {
+          "$ref": "#/definitions/Authentication"
+        },
+        "availability": {
+          "$ref": "#/definitions/Availability"
+        },
+        "confidentiality": {
+          "$ref": "#/definitions/Confidentiality"
+        },
+        "integrity": {
+          "$ref": "#/definitions/Integrity"
+        },
+        "privilegesRequired": {
+          "$ref": "#/definitions/PrivilegesRequired"
+        },
+        "scope": {
+          "$ref": "#/definitions/Scope"
+        },
+        "userInteraction": {
+          "$ref": "#/definitions/UserInteraction"
         }
       }
     },
@@ -5951,6 +6155,12 @@ func init() {
       "properties": {
         "cvss": {
           "$ref": "#/definitions/CVSS"
+        },
+        "cvsses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CVSSItem"
+          }
         },
         "description": {
           "type": "string"
@@ -6446,6 +6656,12 @@ func init() {
       "properties": {
         "cvss": {
           "$ref": "#/definitions/CVSS"
+        },
+        "cvsses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CVSSItem"
+          }
         },
         "description": {
           "type": "string"

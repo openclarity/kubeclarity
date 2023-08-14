@@ -454,6 +454,86 @@ definitions:
           type: 'string'
       cvss:
         $ref: '#/definitions/CVSS'
+      cvsses:
+        type: 'array'
+        items:
+          $ref: '#/definitions/CVSSItem'
+
+  CVSSItem:
+    type: object
+    properties:
+      version:
+        type: string
+      vector:
+        type: string
+      vectorBreakdown:
+        $ref: '#/definitions/CVSSVectorBreakdown'
+      metrics:
+        $ref: '#/definitions/CVSSMetrics'
+
+  CVSSVectorBreakdown:
+    type: 'object'
+    properties:
+      # CVSS V2 Exploitability Metrics
+      accessVector:
+        $ref: '#/definitions/AccessVector'
+      accessComplexity:
+        $ref: '#/definitions/AccessComplexity'
+      authentication:
+        $ref: '#/definitions/Authentication'
+
+      # CVSS V3 Exploitability Metrics
+      attackVector:
+        $ref: '#/definitions/AttackVector'
+      attackComplexity:
+        $ref: '#/definitions/AttackComplexity'
+      privilegesRequired:
+        $ref: '#/definitions/PrivilegesRequired'
+      userInteraction:
+        $ref: '#/definitions/UserInteraction'
+      scope:
+        $ref: '#/definitions/Scope'
+
+      # Impact Metrics shared between CVSS V2 and V3
+      confidentiality:
+        $ref: '#/definitions/Confidentiality'
+      integrity:
+        $ref: '#/definitions/Integrity'
+      availability:
+        $ref: '#/definitions/Availability'
+
+  AccessVector:
+    type: string
+    enum:
+      - NETWORK
+      - ADJACENT
+      - LOCAL
+
+  AccessComplexity:
+    type: string
+    enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+
+  Authentication:
+    type: string
+    enum:
+      - MULTIPLE
+      - SINGLE
+      - NONE
+
+  CVSSMetrics:
+    type: 'object'
+    properties:
+      severity:
+        $ref: '#/definitions/VulnerabilitySeverity'
+      baseScore:
+        type: 'number'
+      exploitabilityScore:
+        type: 'number'
+      impactScore:
+        type: 'number'
 
   CVSS:
     type: 'object'
@@ -576,6 +656,10 @@ definitions:
         type: 'array'
         items:
           type: 'string'
+      cvsses:
+        type: 'array'
+        items:
+          $ref: '#/definitions/CVSSItem'
 
   ResourceInfo:
     type: 'object'

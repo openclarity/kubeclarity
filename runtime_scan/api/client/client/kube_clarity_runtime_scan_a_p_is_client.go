@@ -6,10 +6,17 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"net/http"
+
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/spec"
 	"github.com/go-openapi/strfmt"
-	"github.com/openclarity/kubeclarity/runtime_scan/api/client/client/operations"
+	"github.com/go-openapi/swag"
+
+	"github.com/openclarity/kubeclarity/runtime_scan/api/client/client"
+	"github.com/openclarity/kubeclarity/runtime_scan/api/client/models"
 )
 
 // Default kube clarity runtime scan a p is HTTP client.
