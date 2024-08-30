@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> KubeClarity has been deprecated and succeeded by [openclarity/openclarity](https://github.com/openclarity/openclarity).
+>
+> See this [post](post) for changes and migration steps.
+> 
+> **This project does not receive updates. We encourage you to migrate.**
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./images/logos/KubeClarity-logo-dark-bg-horizontal@4x.png">
   <source media="(prefers-color-scheme: light)" srcset="./images/logos/KubeClarity-logo-light-bg-horizontal@4x.png">
