@@ -461,7 +461,7 @@ kubeclarity-postgresql-secret:
   # PostgreSQL host under hostKey
   # PostgreSQL port under portKey
   # PostgreSQL database name under databaseKey
-  # SSL mode under sslmodeKey (disable/enable)
+  # SSL mode under sslmodeKey (disable/require)
   create: true
   secretKey: "postgres-password"
   usernameKey: "postgres-username"
