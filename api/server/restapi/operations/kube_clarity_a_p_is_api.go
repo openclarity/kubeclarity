@@ -18,7 +18,8 @@ import (
 	"github.com/go-openapi/spec"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	
+
+	"github.com/openclarity/kubeclarity/api/server/models"
 )
 
 // NewKubeClarityAPIsAPI creates a new KubeClarityAPIs instance
@@ -55,7 +56,7 @@ func NewKubeClarityAPIsAPI(spec *loads.Document) *KubeClarityAPIsAPI {
 		GetApplicationResourcesIDHandler: GetApplicationResourcesIDHandlerFunc(func(params GetApplicationResourcesIDParams) middleware.Responder {
 			return middleware.NotImplemented("operation GetApplicationResourcesID has not yet been implemented")
 		}),
-		GetApplicationsHandler: GetApplicationsHandlerFunc(func(params GetApplicationsParams, principal interface{}) middleware.Responder {
+		GetApplicationsHandler: GetApplicationsHandlerFunc(func(params GetApplicationsParams, principal *models.Principal) middleware.Responder {
 			return middleware.NotImplemented("operation GetApplications has not yet been implemented")
 		}),
 		GetApplicationsIDHandler: GetApplicationsIDHandlerFunc(func(params GetApplicationsIDParams) middleware.Responder {
@@ -138,7 +139,7 @@ func NewKubeClarityAPIsAPI(spec *loads.Document) *KubeClarityAPIsAPI {
 		}),
 
 		// Applies when the Authorization header is set with the Basic scheme
-		BasicAuthAuth: func(user string, pass string) (interface {}, error) {
+		BasicAuthAuth: func(user string, pass string) (*models.Principal, error) {
 			return nil, errors.NotImplemented("basic auth  (BasicAuth) has not yet been implemented")
 		},
 		// default authorizer is authorized meaning no requests are blocked
@@ -181,7 +182,7 @@ type KubeClarityAPIsAPI struct {
 
 	// BasicAuthAuth registers a function that takes username and password and returns a principal
 	// it performs authentication with basic auth
-	BasicAuthAuth func(string, string) (interface{}, error)
+	BasicAuthAuth func(string, string) (*models.Principal, error)
 
 	// APIAuthorizer provides access control (ACL/RBAC/ABAC) by providing access to the request and authenticated principal
 	APIAuthorizer runtime.Authorizer
@@ -441,7 +442,9 @@ func (o *KubeClarityAPIsAPI) AuthenticatorsFor(schemes map[string]spec.SecurityS
 	for name := range schemes {
 		switch name {
 		case "BasicAuth":
-			result[name] = o.BasicAuthenticator(o.BasicAuthAuth)
+			result[name] = o.BasicAuthenticator(func(username, password string) (interface{}, error) {
+				return o.BasicAuthAuth(username, password)
+			})
 
 		}
 	}

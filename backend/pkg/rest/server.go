@@ -27,7 +27,9 @@ import (
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 
+	"github.com/openclarity/kubeclarity/api/server/models"
 	"github.com/openclarity/kubeclarity/api/server/restapi"
+
 	"github.com/openclarity/kubeclarity/api/server/restapi/operations"
 	"github.com/openclarity/kubeclarity/backend/pkg/common"
 	"github.com/openclarity/kubeclarity/backend/pkg/database"
@@ -130,7 +132,7 @@ func CreateRESTServer(port int, dbHandler *database.Handler, scanner orchestrato
 		return s.DeleteApplicationResource(params.ID)
 	})
 
-	api.GetApplicationsHandler = operations.GetApplicationsHandlerFunc(func(params operations.GetApplicationsParams, principal interface{}) middleware.Responder {
+	api.GetApplicationsHandler = operations.GetApplicationsHandlerFunc(func(params operations.GetApplicationsParams, principal *models.Principal) middleware.Responder {
 		return s.GetApplications(params, principal)
 	})
 

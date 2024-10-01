@@ -17,13 +17,13 @@ func init() {
 	}
 }
 
-func IsLoggedIn(user, pass string) (interface{}, error) {
+func IsLoggedIn(user, pass string) (*models.Principal, error) {
 	password, ok := userDb[user]
 	if !ok || pass != password {
 		return nil, errors.New(401, "Unauthorized: not a registered user")
 	}
 
-	return models.Principal{
+	return &models.Principal{
 		Name: user,
 	}, nil
 }

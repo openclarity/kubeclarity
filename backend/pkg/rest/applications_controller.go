@@ -114,7 +114,7 @@ func (s *Server) UpdateApplication(params operations.PutApplicationsIDParams) mi
 	return operations.NewPutApplicationsIDOK().WithPayload(createApplicationInfoFromDBApplication(application))
 }
 
-func (s *Server) GetApplications(params operations.GetApplicationsParams, principal interface{}) middleware.Responder {
+func (s *Server) GetApplications(params operations.GetApplicationsParams, principal *models.Principal) middleware.Responder {
 	applicationsView, total, err := s.dbHandler.ApplicationTable().GetApplicationsAndTotal(
 		database.GetApplicationsParams{
 			GetApplicationsParams:     params,
