@@ -4,11 +4,13 @@ package restapi
 
 import (
 	"crypto/tls"
+	"fmt"
 	"net/http"
 	"strings"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/openclarity/kubeclarity/api/server/auth"
 
 	"github.com/openclarity/kubeclarity/api/server/restapi/operations"
 )
@@ -41,6 +43,11 @@ func configureAPI(api *operations.KubeClarityAPIsAPI) http.Handler {
 
 	api.ServerShutdown = func() {}
 
+	api.BasicAuthAuth = func(user string, pass string) (interface{}, error) {
+		// The header: Authorization: Basic {base64 string} has already been decoded by the runtime as a username:password pair
+		fmt.Println("IsRegisteredAuth handler called")
+		return auth.IsLoggedIn(user, pass)
+	}
 	return setupGlobalMiddleware(api.Serve(setupMiddlewares))
 }
 

@@ -34,6 +34,12 @@ func (o *GetApplicationsReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetApplicationsUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		result := NewGetApplicationsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -74,6 +80,27 @@ func (o *GetApplicationsOK) readResponse(response runtime.ClientResponse, consum
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetApplicationsUnauthorized creates a GetApplicationsUnauthorized with default headers values
+func NewGetApplicationsUnauthorized() *GetApplicationsUnauthorized {
+	return &GetApplicationsUnauthorized{}
+}
+
+/* GetApplicationsUnauthorized describes a response with status code 401, with default header values.
+
+unauthorized access for a lack of authentication
+*/
+type GetApplicationsUnauthorized struct {
+}
+
+func (o *GetApplicationsUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /applications][%d] getApplicationsUnauthorized ", 401)
+}
+
+func (o *GetApplicationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

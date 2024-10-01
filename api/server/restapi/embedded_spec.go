@@ -206,6 +206,11 @@ func init() {
     },
     "/applications": {
       "get": {
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ],
         "summary": "Get applications",
         "parameters": [
           {
@@ -318,6 +323,9 @@ func init() {
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/responses/unauthorized"
           },
           "default": {
             "$ref": "#/responses/UnknownError"
@@ -1956,6 +1964,20 @@ func init() {
         "license"
       ]
     },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "PrivilegesRequired": {
       "type": "string",
       "enum": [
@@ -3154,6 +3176,14 @@ func init() {
       "schema": {
         "$ref": "#/definitions/ApiResponse"
       }
+    },
+    "unauthorized": {
+      "description": "unauthorized access for a lack of authentication"
+    }
+  },
+  "securityDefinitions": {
+    "BasicAuth": {
+      "type": "basic"
     }
   }
 }`))
@@ -3524,6 +3554,11 @@ func init() {
     },
     "/applications": {
       "get": {
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ],
         "summary": "Get applications",
         "parameters": [
           {
@@ -3788,6 +3823,9 @@ func init() {
                 }
               }
             }
+          },
+          "401": {
+            "description": "unauthorized access for a lack of authentication"
           },
           "default": {
             "description": "unknown error",
@@ -6027,6 +6065,20 @@ func init() {
         "license"
       ]
     },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "PrivilegesRequired": {
       "type": "string",
       "enum": [
@@ -7228,6 +7280,14 @@ func init() {
       "schema": {
         "$ref": "#/definitions/ApiResponse"
       }
+    },
+    "unauthorized": {
+      "description": "unauthorized access for a lack of authentication"
+    }
+  },
+  "securityDefinitions": {
+    "BasicAuth": {
+      "type": "basic"
     }
   }
 }`))

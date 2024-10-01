@@ -57,6 +57,30 @@ func (o *GetApplicationsOK) WriteResponse(rw http.ResponseWriter, producer runti
 	}
 }
 
+// GetApplicationsUnauthorizedCode is the HTTP code returned for type GetApplicationsUnauthorized
+const GetApplicationsUnauthorizedCode int = 401
+
+/*GetApplicationsUnauthorized unauthorized access for a lack of authentication
+
+swagger:response getApplicationsUnauthorized
+*/
+type GetApplicationsUnauthorized struct {
+}
+
+// NewGetApplicationsUnauthorized creates GetApplicationsUnauthorized with default headers values
+func NewGetApplicationsUnauthorized() *GetApplicationsUnauthorized {
+
+	return &GetApplicationsUnauthorized{}
+}
+
+// WriteResponse to the client
+func (o *GetApplicationsUnauthorized) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.Header().Del(runtime.HeaderContentType) //Remove Content-Type on empty responses
+
+	rw.WriteHeader(401)
+}
+
 /*GetApplicationsDefault unknown error
 
 swagger:response getApplicationsDefault

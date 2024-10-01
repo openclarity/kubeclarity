@@ -130,8 +130,8 @@ func CreateRESTServer(port int, dbHandler *database.Handler, scanner orchestrato
 		return s.DeleteApplicationResource(params.ID)
 	})
 
-	api.GetApplicationsHandler = operations.GetApplicationsHandlerFunc(func(params operations.GetApplicationsParams) middleware.Responder {
-		return s.GetApplications(params)
+	api.GetApplicationsHandler = operations.GetApplicationsHandlerFunc(func(params operations.GetApplicationsParams, principal interface{}) middleware.Responder {
+		return s.GetApplications(params, principal)
 	})
 
 	api.PostApplicationsHandler = operations.PostApplicationsHandlerFunc(func(params operations.PostApplicationsParams) middleware.Responder {
