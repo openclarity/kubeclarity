@@ -36,7 +36,7 @@ type ClientService interface {
 
 	GetApplicationResourcesID(params *GetApplicationResourcesIDParams, opts ...ClientOption) (*GetApplicationResourcesIDOK, error)
 
-	GetApplications(params *GetApplicationsParams, opts ...ClientOption) (*GetApplicationsOK, error)
+	GetApplications(params *GetApplicationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsOK, error)
 
 	GetApplicationsID(params *GetApplicationsIDParams, opts ...ClientOption) (*GetApplicationsIDOK, error)
 
@@ -244,7 +244,7 @@ func (a *Client) GetApplicationResourcesID(params *GetApplicationResourcesIDPara
 /*
   GetApplications gets applications
 */
-func (a *Client) GetApplications(params *GetApplicationsParams, opts ...ClientOption) (*GetApplicationsOK, error) {
+func (a *Client) GetApplications(params *GetApplicationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetApplicationsParams()
@@ -258,6 +258,7 @@ func (a *Client) GetApplications(params *GetApplicationsParams, opts ...ClientOp
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetApplicationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

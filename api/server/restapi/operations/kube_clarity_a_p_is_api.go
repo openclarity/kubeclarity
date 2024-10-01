@@ -18,6 +18,8 @@ import (
 	"github.com/go-openapi/spec"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/openclarity/kubeclarity/api/server/models"
 )
 
 // NewKubeClarityAPIsAPI creates a new KubeClarityAPIs instance
@@ -54,7 +56,7 @@ func NewKubeClarityAPIsAPI(spec *loads.Document) *KubeClarityAPIsAPI {
 		GetApplicationResourcesIDHandler: GetApplicationResourcesIDHandlerFunc(func(params GetApplicationResourcesIDParams) middleware.Responder {
 			return middleware.NotImplemented("operation GetApplicationResourcesID has not yet been implemented")
 		}),
-		GetApplicationsHandler: GetApplicationsHandlerFunc(func(params GetApplicationsParams) middleware.Responder {
+		GetApplicationsHandler: GetApplicationsHandlerFunc(func(params GetApplicationsParams, principal *models.Principal) middleware.Responder {
 			return middleware.NotImplemented("operation GetApplications has not yet been implemented")
 		}),
 		GetApplicationsIDHandler: GetApplicationsIDHandlerFunc(func(params GetApplicationsIDParams) middleware.Responder {
@@ -135,6 +137,13 @@ func NewKubeClarityAPIsAPI(spec *loads.Document) *KubeClarityAPIsAPI {
 		PutRuntimeScheduleScanConfigHandler: PutRuntimeScheduleScanConfigHandlerFunc(func(params PutRuntimeScheduleScanConfigParams) middleware.Responder {
 			return middleware.NotImplemented("operation PutRuntimeScheduleScanConfig has not yet been implemented")
 		}),
+
+		// Applies when the Authorization header is set with the Basic scheme
+		BasicAuthAuth: func(user string, pass string) (*models.Principal, error) {
+			return nil, errors.NotImplemented("basic auth  (BasicAuth) has not yet been implemented")
+		},
+		// default authorizer is authorized meaning no requests are blocked
+		APIAuthorizer: security.Authorized(),
 	}
 }
 
@@ -170,6 +179,13 @@ type KubeClarityAPIsAPI struct {
 	// JSONProducer registers a producer for the following mime types:
 	//   - application/json
 	JSONProducer runtime.Producer
+
+	// BasicAuthAuth registers a function that takes username and password and returns a principal
+	// it performs authentication with basic auth
+	BasicAuthAuth func(string, string) (*models.Principal, error)
+
+	// APIAuthorizer provides access control (ACL/RBAC/ABAC) by providing access to the request and authenticated principal
+	APIAuthorizer runtime.Authorizer
 
 	// DeleteApplicationResourcesIDHandler sets the operation handler for the delete application resources ID operation
 	DeleteApplicationResourcesIDHandler DeleteApplicationResourcesIDHandler
@@ -310,6 +326,10 @@ func (o *KubeClarityAPIsAPI) Validate() error {
 		unregistered = append(unregistered, "JSONProducer")
 	}
 
+	if o.BasicAuthAuth == nil {
+		unregistered = append(unregistered, "BasicAuthAuth")
+	}
+
 	if o.DeleteApplicationResourcesIDHandler == nil {
 		unregistered = append(unregistered, "DeleteApplicationResourcesIDHandler")
 	}
@@ -418,12 +438,22 @@ func (o *KubeClarityAPIsAPI) ServeErrorFor(operationID string) func(http.Respons
 
 // AuthenticatorsFor gets the authenticators for the specified security schemes
 func (o *KubeClarityAPIsAPI) AuthenticatorsFor(schemes map[string]spec.SecurityScheme) map[string]runtime.Authenticator {
-	return nil
+	result := make(map[string]runtime.Authenticator)
+	for name := range schemes {
+		switch name {
+		case "BasicAuth":
+			result[name] = o.BasicAuthenticator(func(username, password string) (interface{}, error) {
+				return o.BasicAuthAuth(username, password)
+			})
+
+		}
+	}
+	return result
 }
 
 // Authorizer returns the registered authorizer
 func (o *KubeClarityAPIsAPI) Authorizer() runtime.Authorizer {
-	return nil
+	return o.APIAuthorizer
 }
 
 // ConsumersFor gets the consumers for the specified media types.

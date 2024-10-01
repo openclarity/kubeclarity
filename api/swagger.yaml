@@ -868,6 +868,21 @@ definitions:
     properties:
       name:
         type: 'string'
+        
+  Principal:
+    type: object
+    properties:
+      name:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+
+
+securityDefinitions:
+  BasicAuth:
+    type: basic
 
 paths:
   /namespaces:
@@ -1116,6 +1131,8 @@ paths:
         - $ref: '#/parameters/applicationResourceID'
         - $ref: '#/parameters/packageID'
         - $ref: '#/parameters/currentRuntimeScan'
+      security:
+        - BasicAuth: []
       responses:
         '200':
           description: 'Success'
@@ -1132,6 +1149,8 @@ paths:
                 description: 'List of applications in the given filters and page. List length must be lower or equal to pageSize'
                 items:
                   $ref: '#/definitions/Application'
+        '401':
+          $ref: "#/responses/unauthorized"
         default:
           $ref: '#/responses/UnknownError'
     post:
@@ -2207,8 +2226,11 @@ parameters:
       type: 'string'
       enum: *VulnerabilitySource
     required: false
+  
 
 responses:
+  unauthorized:
+    description: unauthorized access for a lack of authentication
   UnknownError:
     description: 'unknown error'
     schema:

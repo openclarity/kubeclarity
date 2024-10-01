@@ -2,7 +2,7 @@ SHELL=/bin/bash
 
 # Project variables
 BINARY_NAME ?= kubeclarity
-DOCKER_REGISTRY ?= ghcr.io/openclarity
+DOCKER_REGISTRY ?= us-west1-docker.pkg.dev/lulus-development/cloud
 VERSION ?= $(shell git rev-parse HEAD)
 DOCKER_IMAGE ?= $(DOCKER_REGISTRY)/$(BINARY_NAME)
 DOCKER_TAG ?= ${VERSION}
